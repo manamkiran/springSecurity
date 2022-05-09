@@ -1,5 +1,6 @@
 package kiran.manam.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -39,6 +40,11 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		userDetailsService.createUser(user1);
 		userDetailsService.createUser(user2);
 		auth.userDetailsService(userDetailsService);
+	}
+	
+	@Bean
+	public PasswordEncoder passwordEncoder(){
+		return NoOpPasswordEncoder.getInstance();
 	}
 
 }
